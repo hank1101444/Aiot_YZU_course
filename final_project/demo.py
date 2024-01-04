@@ -10,15 +10,15 @@ import pwm_motor as motor
 import time
 import ultrasound
 import RPi.GPIO as GPIO
-import object_detection_camera 
+#import object_detection_camera 
 # Import utilites
+sys.path.append('../..')
 sys.path.append('..')
 from utils import label_map_util
 from utils import visualization_utils as vis_util
 
-detector = object_detection_camera.ObjectDetector(camera_type='usb')  # 可以改为 'picamera'
+#detector = object_detection_camera.ObjectDetector(camera_type='usb')  # 可以改为 'picamera'
 try:
-    detector.detect_objects()
     sensor1 = ultrasound.UltrasonicSensor(31, 33)    #left trig echo
     sensor2 = ultrasound.UltrasonicSensor(22, 36)   #mid
     sensor3 = ultrasound.UltrasonicSensor(7, 15)   #right
@@ -45,10 +45,10 @@ try:
         if(left < 8):
             motor.modify_turnRight()
             #print('right')
-        if(right < 8):
+        elif(right < 8):
             motor.modify_turnLeft()
             #print('left')
 
 finally:
     GPIO.cleanup()
-    detector.cleanup() 
+    #detector.cleanup()

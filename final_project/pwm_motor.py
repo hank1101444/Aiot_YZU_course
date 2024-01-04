@@ -46,12 +46,12 @@ def stop():
     pwm_l1.ChangeDutyCycle(0)
     pwm_l2.ChangeDutyCycle(0)
 
-def forward():
+def forward(t):
     pwm_r1.ChangeDutyCycle(dc)
     pwm_r2.ChangeDutyCycle(0)
     pwm_l1.ChangeDutyCycle(dc)
     pwm_l2.ChangeDutyCycle(0)
-    #time.sleep(t)
+    time.sleep(t)
     #stop()
 
 def backward():
