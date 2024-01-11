@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<net name="TensorFlow_Frontend_IR" version="11">
+	<layers>
+		<layer id="0" name="input" type="Parameter" version="opset1">
+			<data shape="1,320,320,3" element_type="f32" />
+			<rt_info>
+				<attribute name="old_api_map_element_type" version="0" value="f16" />
+			</rt_info>
+			<output>
+				<port id="0" precision="FP32" names="input">
+					<dim>1</dim>
+					<dim>320</dim>
+					<dim>320</dim>
+					<dim>3</dim>
+				</port>
+			</output>
+		</layer>
+	</layers>
+	<edges />
+	<rt_info>
+		<MO_version value="2023.2.0-13089-cfd42bd2cb0-HEAD" />
+		<Runtime_version value="2023.2.0-13089-cfd42bd2cb0-HEAD" />
+		<conversion_parameters>
+			<is_python_api_used value="False" />
+			<saved_model_dir value="DIR" />
+		</conversion_parameters>
+		<legacy_frontend value="False" />
+	</rt_info>
+</net>
