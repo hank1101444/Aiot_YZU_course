@@ -4,7 +4,8 @@ import tensorflow as tf
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 import sys
-sys.path.append('..')
+sys.path.append('..') 
+sys.path.append('../..')
 from utils import label_map_util
 from utils import visualization_utils as vis_util
 import time
