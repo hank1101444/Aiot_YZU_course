@@ -1,7 +1,7 @@
-#!/usr/bin/python 
-#+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-#|R|a|s|p|b|e|r|r|y|P|i|.|c|o|m|.|t|w|
-#+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+#!/usr/bin/python
+# +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+# |R|a|s|p|b|e|r|r|y|P|i|.|c|o|m|.|t|w|
+# +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 # Copyright (c) 2016, raspberrypi.com.tw
 # All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
@@ -21,7 +21,7 @@ Motor_R2_Pin = 18
 Motor_L1_Pin = 11
 Motor_L2_Pin = 13
 t = 0.5
-dc = 50
+dc = 85
 
 
 GPIO.setmode(GPIO.BOARD)
@@ -45,59 +45,62 @@ def stop():
     pwm_r2.ChangeDutyCycle(0)
     pwm_l1.ChangeDutyCycle(0)
     pwm_l2.ChangeDutyCycle(0)
+    time.sleep(0.1)
 
-def forward():
+
+def forward(t):
     pwm_r1.ChangeDutyCycle(dc)
     pwm_r2.ChangeDutyCycle(0)
     pwm_l1.ChangeDutyCycle(dc)
     pwm_l2.ChangeDutyCycle(0)
-    #time.sleep(t)
-    #stop()
+    # time.sleep(t)
+    # stop()
 
-def backward():
+
+def backward(T):
+    #stop()
     pwm_r1.ChangeDutyCycle(0)
     pwm_r2.ChangeDutyCycle(dc)
     pwm_l1.ChangeDutyCycle(0)
     pwm_l2.ChangeDutyCycle(dc)
-    time.sleep(t)
+    time.sleep(T)
     stop()
 
+
 def modify_turnLeft():
-    stop()
     pwm_r1.ChangeDutyCycle(dc)
     pwm_r2.ChangeDutyCycle(0)
     pwm_l1.ChangeDutyCycle(0)
     pwm_l2.ChangeDutyCycle(0)
     time.sleep(t)
+    stop()
 
 
 def modify_turnRight():
-    stop()
     pwm_r1.ChangeDutyCycle(0)
     pwm_r2.ChangeDutyCycle(0)
     pwm_l1.ChangeDutyCycle(dc)
     pwm_l2.ChangeDutyCycle(0)
     time.sleep(t)
-
-
-def turnLeft(t2):
     stop()
+
+
+def turnLeft(T):
     pwm_r1.ChangeDutyCycle(dc)
     pwm_r2.ChangeDutyCycle(0)
     pwm_l1.ChangeDutyCycle(0)
     pwm_l2.ChangeDutyCycle(dc)
-    time.sleep(t2)
-
-
-def turnRight(t2):
+    time.sleep(T)
     stop()
+
+
+def turnRight(T):
     pwm_r1.ChangeDutyCycle(0)
     pwm_r2.ChangeDutyCycle(dc)
     pwm_l1.ChangeDutyCycle(dc)
     pwm_l2.ChangeDutyCycle(0)
-    time.sleep(t2)
-
-    
+    time.sleep(T)
+    stop()
 
 
 def cleanup():
@@ -107,5 +110,3 @@ def cleanup():
     pwm_l1.stop()
     pwm_l2.stop()
     GPIO.cleanup()
-
-
